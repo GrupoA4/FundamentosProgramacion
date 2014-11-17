@@ -1,0 +1,99 @@
+\documentclass[12pt]{article}
+
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,activeacute]{babel}
+\usepackage{listings}
+
+\title{Errores en funciones}
+\date{}
+\setlength{\parskip}{2em}
+\pagestyle{plain}
+
+\begin{document}
+\maketitle
+
+\section*{a)}
+
+\lstset{language=C++, breaklines=true, basicstyle=\footnotesize}
+\begin{lstlisting}
+int ValorAbsoluto (int entero) {
+	if (entero < 0)
+		entero = -entero;
+	else
+		return entero;
+}
+\end{lstlisting}
+
+No es correcto retornar la variable de entrada.
+
+\begin{lstlisting}
+int ValorAbsoluto (int entero) {
+	int valor_absoluto = entero;
+	if (entero < 0)
+		valor_absoluto = -entero;
+	else
+		return valor_absoluto;
+}
+\end{lstlisting}
+
+\section*{b)}
+
+\begin{lstlisting}
+void Cuadrado (int entero){
+	return entero*entero;
+}
+\end{lstlisting}
+
+No es correcto devolver directamente el resultado de
+una operaci'on.
+
+\begin{lstlisting}
+void Cuadrado (int entero){
+	int cuadrado;
+	cuadrado = entero*entero;
+	return cuadrado;
+}
+\end{lstlisting}
+
+\section*{c)}
+
+\begin{lstlisting}
+void Imprime (double valor){
+	double valor;
+	
+	cout << valor;
+}
+\end{lstlisting}
+
+No tiene sentido declarar otra variable con el mismo nombre.
+
+\begin{lstlisting}
+void Imprime (double valor){
+	cout << valor;
+}
+\end{lstlisting}
+
+\section*{d)}
+
+\begin{lstlisting}
+bool EsPositivo(int valor){
+	if ( valor > 0)
+		return true;
+}
+\end{lstlisting}
+
+No es bueno utilizar la sentencia return dentro de estructuras.
+
+\begin{lstlisting}
+bool EsPositivo(int valor){
+	bool es_positivo = false;
+	
+	if ( valor > 0)
+		es_positivo = true;
+		
+	return true;
+}
+\end{lstlisting}
+	
+\end{document}
